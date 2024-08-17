@@ -132,6 +132,12 @@ INSERT INTO `accionEntidad` (`id`, `descripcion`) VALUES
 
 -- --------------------------------------------------------
 
+CREATE TABLE modelosBalizas (
+    id INT NOT NULL AUTO_INCREMENT,
+    descripcion VARCHAR(50) UNIQUE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
 --
 -- Estructura de tabla para la tabla `balizas`
 --
@@ -156,6 +162,7 @@ CREATE TABLE `balizas` (
   `idDataminer` varchar(45) DEFAULT NULL,
   `idElement` varchar(45) DEFAULT NULL COMMENT 'Identificador de elemento devuelto por la API de Dataminer una vez confirmada la creación de la baliza como elemento.',
   `puerto` varchar(10) DEFAULT NULL,
+  `idModeloBaliza` int DEFAULT NULL,
   `idTipoBaliza` int DEFAULT NULL,
   `idEstadoBaliza` int NOT NULL,
   `idUnidad` int DEFAULT NULL COMMENT 'Id de la unidad explotadora de la baliza, si es null no esta asignada.',
@@ -729,6 +736,7 @@ ALTER TABLE `balizas`
   ADD KEY `fk_t_balizas_t_estado_baliza1_idx` (`idEstadoBaliza`),
   ADD KEY `fk_t_balizas_t_unidades1_idx` (`idUnidad`),
   ADD KEY `fk_t_balizas_t_tipo_contrato1_idx` (`idTipoContrato`),
+  ADD KEY `fk_t_balizas_t_modeloBaliza1_idx` (`idModeloBaliza`),
   ADD KEY `idConexion` (`idConexion`);
 
 --
@@ -1044,6 +1052,7 @@ ALTER TABLE `balizas`
   ADD CONSTRAINT `fk_t_balizas_t_estado_baliza1` FOREIGN KEY (`idEstadoBaliza`) REFERENCES `estados` (`id`),
   ADD CONSTRAINT `fk_t_balizas_t_tipo_baliza1` FOREIGN KEY (`idTipoBaliza`) REFERENCES `tipoBaliza` (`id`),
   ADD CONSTRAINT `fk_t_balizas_t_tipo_contrato1` FOREIGN KEY (`idTipoContrato`) REFERENCES `tipoContrato` (`id`),
+  ADD CONSTRAINT `fk_modeloBaliza` FOREIGN KEY (`idModeloBaliza`) REFERENCES `modelosBalizas` (`id`),
   ADD CONSTRAINT `fk_t_balizas_t_unidades1` FOREIGN KEY (`idUnidad`) REFERENCES `unidades` (`id`);
 
 --
