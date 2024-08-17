@@ -132,10 +132,9 @@ INSERT INTO `accionEntidad` (`id`, `descripcion`) VALUES
 
 -- --------------------------------------------------------
 
-CREATE TABLE modelosBalizas (
-    id INT NOT NULL AUTO_INCREMENT,
-    descripcion VARCHAR(50) UNIQUE,
-    PRIMARY KEY (id)
+CREATE TABLE `modelosBalizas` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `descripcion` VARCHAR(50) UNIQUE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
@@ -738,6 +737,9 @@ ALTER TABLE `balizas`
   ADD KEY `fk_t_balizas_t_tipo_contrato1_idx` (`idTipoContrato`),
   ADD KEY `fk_t_balizas_t_modeloBaliza1_idx` (`idModeloBaliza`),
   ADD KEY `idConexion` (`idConexion`);
+
+ALTER TABLE `modelosBalizas`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `conexiones`
