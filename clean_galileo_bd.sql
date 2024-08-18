@@ -604,6 +604,7 @@ CREATE TABLE `tipoEntidad` (
 --
 
 INSERT INTO `tipoEntidad` (`id`, `descripcion`) VALUES
+(1, 'Modelo Baliza'),
 (3, 'balizas'),
 (8, 'objetivos'),
 (6, 'operaciones'),
