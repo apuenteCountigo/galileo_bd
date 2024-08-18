@@ -133,7 +133,7 @@ INSERT INTO `accionEntidad` (`id`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 CREATE TABLE `modelosBalizas` (
-    `id` INT NOT NULL AUTO_INCREMENT,
+    `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `descripcion` VARCHAR(50) UNIQUE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -222,8 +222,8 @@ CREATE TABLE `documentos` (
 --
 
 CREATE TABLE `empleos` (
-  `id` int NOT NULL,
-  `descripcion` varchar(20) DEFAULT NULL COMMENT 'Empleo de los usuarios de la organización. Valores: Guardia Civil, Cabo, Cabo1, Sargento, Sargento 1º, Brigada, Subteniente, Suboficial Mayor, Alférez, Teniente, Capitan, Comandante, Teniente Coronel, Coronel, General de Brigada.'
+   `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `descripcion` VARCHAR(50) UNIQUE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='Tabla de empleos de la organización.';
 
 --
@@ -318,8 +318,8 @@ CREATE TABLE `invitadoExterno` (
 --
 
 CREATE TABLE `juzgados` (
-  `id` int NOT NULL,
-  `descripcion` varchar(45) DEFAULT NULL COMMENT 'Nombre del juzgado.'
+   `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `descripcion` VARCHAR(50) UNIQUE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='Tabla de juzgados.';
 
 --
@@ -756,13 +756,6 @@ ALTER TABLE `documentos`
   ADD KEY `fk_documentos_balizas1_idx` (`idBalizas`);
 
 --
--- Indices de la tabla `empleos`
---
-ALTER TABLE `empleos`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `descripcion` (`descripcion`);
-
---
 -- Indices de la tabla `estados`
 --
 ALTER TABLE `estados`
@@ -784,12 +777,6 @@ ALTER TABLE `historicoObjetivosBalizas`
 ALTER TABLE `invitadoExterno`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_invitadoExterno_usuarios1_idx` (`usuarios_id`);
-
---
--- Indices de la tabla `juzgados`
---
-ALTER TABLE `juzgados`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `objetivos`
@@ -928,12 +915,6 @@ ALTER TABLE `conexiones`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `empleos`
---
-ALTER TABLE `empleos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
 -- AUTO_INCREMENT de la tabla `estados`
 --
 ALTER TABLE `estados`
@@ -950,12 +931,6 @@ ALTER TABLE `historicoObjetivosBalizas`
 --
 ALTER TABLE `invitadoExterno`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `juzgados`
---
-ALTER TABLE `juzgados`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `objetivos`
