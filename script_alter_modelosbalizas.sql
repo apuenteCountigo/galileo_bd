@@ -10,7 +10,7 @@ SET @table_exists = (
 -- Paso 2: Crear la tabla solo si no existe
 IF @table_exists = 0 THEN
     CREATE TABLE modelosBalizas (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         descripcion VARCHAR(50) UNIQUE
     );
 END IF;
