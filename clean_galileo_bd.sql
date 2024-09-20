@@ -187,21 +187,18 @@ CREATE TABLE `conexiones` (
   `password` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci DEFAULT NULL,
   `fechaCreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `dmaID` int DEFAULT NULL,
-  `viewIDs` int DEFAULT NULL
+  `viewIDs` int DEFAULT NULL,
+  `ruta` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='Datos de conexiones necesarias para la comunicación del Backend de la página web con el resto de aplicaciones.';
 
 --
 -- Volcado de datos para la tabla `conexiones`
 --
 
-INSERT INTO `conexiones` (`id`, `servicio`, `ipServicio`, `puerto`, `usuario`, `password`, `fechaCreacion`, `dmaID`, `viewIDs`) VALUES
-(1, 'TRACCAR', '192.168.0.198', '8082', 'admin', 'admin', '2022-07-02 21:02:59', NULL, NULL),
-(2, 'DATAMINER', '192.168.0.200', '8084', 'countigo', 'Countigo2022!', '2022-07-02 21:02:59', 2633, 312),
-(4, 'BASE DE DATOS', '192.168.7.22', '443', 'super', '12345', '2022-07-02 21:02:59', NULL, NULL),
-(7, 'FTP', '192.168.0.246', NULL, 'Countigo', 'Countigo2022!', '2022-07-18 14:28:41', 1, NULL),
-(9, 'OTROS', '10.10.10.6', '8080', 'admin', 'admin', '2022-07-27 01:57:02', NULL, NULL),
-(10, 'BASE DE DATOS', '192.168.1.2', '8988', 'root', '12345678', '2022-09-01 18:30:43', NULL, NULL);
-
+INSERT INTO `conexiones` (`id`, `servicio`, `ipServicio`, `puerto`, `usuario`, `password`, `fechaCreacion`, `dmaID`, `viewIDs`,`ruta`) VALUES
+(1, 'TRACCAR', '192.168.0.198', '8082', 'admin', 'admin', '2022-07-02 21:02:59', NULL, NULL, NULL),
+(2, 'DATAMINER', '192.168.0.200', '8084', 'countigo', 'Countigo2022!', '2022-07-02 21:02:59', 2633, 312, NULL),
+(3, 'FTP', '192.168.0.246', NULL, 'Countigo', 'Countigo2022!', '2022-07-18 14:28:41', 1, NULL, NULL);
 -- --------------------------------------------------------
 
 --
@@ -738,9 +735,6 @@ ALTER TABLE `balizas`
   ADD KEY `fk_t_balizas_t_tipo_contrato1_idx` (`idTipoContrato`),
   ADD KEY `fk_t_balizas_t_modeloBaliza1_idx` (`idModeloBaliza`),
   ADD KEY `idConexion` (`idConexion`);
-
-ALTER TABLE `modelosBalizas`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `conexiones`

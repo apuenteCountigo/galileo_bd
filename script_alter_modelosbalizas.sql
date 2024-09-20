@@ -20,19 +20,19 @@ SET @column_name = 'idModeloBaliza';
 SET @column_exists = (
     SELECT COUNT(*)
     FROM information_schema.columns
-    WHERE table_name = 'Balizas'
+    WHERE table_name = 'balizas'
     AND column_name = @column_name
     AND table_schema = DATABASE()
 );
 
 -- Paso 2: Agregar la columna 'idModeloBaliza' solo si no existe
 IF @column_exists = 0 THEN
-    ALTER TABLE Balizas
+    ALTER TABLE balizas
     ADD COLUMN idModeloBaliza INT NULL;
 END IF;
 
 -- Paso 3: Crear la relación de clave foránea
-ALTER TABLE Balizas
+ALTER TABLE balizas
 ADD CONSTRAINT fk_modeloBaliza
 FOREIGN KEY (idModeloBaliza) REFERENCES modelosBalizas(id)
 ON DELETE SET NULL
