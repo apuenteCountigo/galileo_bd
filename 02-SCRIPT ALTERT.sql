@@ -115,6 +115,16 @@ BEGIN
         ADD CONSTRAINT uk_descripcion_idOperacion UNIQUE (descripcion(255), idOperacion);
     END IF;
 
+    -- 14. Agregar ruta a la tabla conexiones
+    IF NOT EXISTS (
+        SELECT * FROM information_schema.columns
+        WHERE table_name = 'conexiones' 
+        AND column_name = 'ruta'
+    ) THEN
+        ALTER TABLE conexiones 
+        ADD COLUMN ruta VARCHAR(255) NULL;
+    END IF;
+
     -- Limpiar la tabla temporal
     DROP TEMPORARY TABLE IF EXISTS TempModelos;
     
