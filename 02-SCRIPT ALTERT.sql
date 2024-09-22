@@ -90,6 +90,10 @@ BEGIN
     MODIFY COLUMN idElement INT NOT NULL,
     MODIFY COLUMN idGrupo INT NOT NULL;
 
+    -- Modificar el campor traccarID para que no permita null
+    ALTER TABLE objetivos 
+    MODIFY COLUMN traccarID INT NOT NULL;
+
     -- Operaciones en la tabla "objetivos"
     -- 12. Eliminar la restricción UNIQUE del campo "descripcion" si existe
     IF EXISTS (
