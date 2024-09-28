@@ -22,3 +22,6 @@ ALTER TABLE tipoEntidad
 INSERT INTO `tipoEntidad` (`id`, `descripcion`) VALUES
 (1, 'Modelo Baliza'),
 (7, 'Configuración de balizas');
+
+ALTER TABLE conexiones
+MODIFY COLUMN ipServicio VARCHAR(255);

@@ -1,0 +1,2 @@
+ALTER TABLE conexiones
+MODIFY COLUMN ipServicio VARCHAR(255);
