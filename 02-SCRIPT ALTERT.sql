@@ -71,7 +71,7 @@ BEGIN
         AND constraint_type = 'UNIQUE' 
         AND constraint_name LIKE '%nombre%'
     ) THEN
-        ALTER TABLE operaciones DROP INDEX nombre;
+        ALTER TABLE operaciones DROP INDEX nombre_UNIQUE;
     END IF;
 
     -- 10. Crear una llave combinada con los campos "nombre" e "idUnidad"
