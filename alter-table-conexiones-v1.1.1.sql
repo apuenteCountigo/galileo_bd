@@ -1,0 +1,5 @@
+ALTER TABLE conexiones
+MODIFY COLUMN ipServicio VARCHAR(255);
+
+ALTER TABLE conexiones
+ADD COLUMN mapAddress VARCHAR(255) DEFAULT '';
